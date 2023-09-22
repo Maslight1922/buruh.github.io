@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulir Penghitung Upah Lemburan BE A MAN</title>
+    <!-- Tambahkan tautan ke Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/css/bootstrap.min.css">
+    <style>
+        /* CSS khusus untuk penataan tampilan */
+        body {
+            padding: 20px;
+        }
+
+        /* CSS untuk card input */
+        .custom-card-input {
+            background-color: #007BFF; /* Warna latar belakang biru untuk card input */
+            color: white; /* Warna teks putih */
+            padding: 20px; /* Ruang dalam card input */
+            border-radius: 10px; /* Sudut bulat */
+        }
+
+        /* CSS untuk card output */
+        .custom-card-output {
+            background-color: #FFA500; /* Warna latar belakang jingga untuk card output */
+            color: black; /* Warna teks hitam */
+            padding: 20px; /* Ruang dalam card output */
+            border-radius: 10px; /* Sudut bulat */
+            margin-top: 20px; /* Ruang antara card input dan card output */
+        }
+
+        /* CSS untuk hasil total jam */
+        .hasil-total-jam {
+            background-color: #6B3E9E; /* Warna latar belakang ungu untuk hasil total jam */
+            color: yellow; /* Warna teks kuning */
+            padding: 20px; /* Ruang dalam hasil total jam */
+            border-radius: 10px; /* Sudut bulat */
+            margin-top: 20px; /* Ruang antara card input dan hasil total jam */
+        }
+        /* CSS untuk footer */
+.footer {
+    background-color: #333; /* Warna latar belakang dark grey */
+    color: white; /* Warna teks putih */
+    padding: 20px; /* Ruang dalam footer */
+    border-radius: 10px; /* Sudut bulat */
+}
+/* CSS untuk tautan Instagram */
+.instagram-link {
+    color: #e4405f; /* Warna teks tautan Instagram */
+    text-decoration: none; /* Hapus dekorasi tautan */
+    border-radius: 10px; /* Sudut bulat */
+}
+
+/* Mengubah warna latar belakang saat tautan dihover */
+.instagram-link:hover {
+    background-color: #ffdb58; /* Warna latar belakang kuning saat hover */
+    color: #000; /* Warna teks hitam saat hover */
+    border-radius: 10px; /* Sudut bulat */
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">Formulir Penghitung Upah Lemburan BE A MAN</h1>
+
+        <!-- Card Bootstrap dengan kelas tambahan untuk penampilan kustom -->
+        <div class="card custom-card-input">
+            <div class="card-body">
+                <form id="upahForm" action="#" method="post">
+                    <div class="mb-3">
+                        <label for="gajiPokok" class="form-label">Gaji Pokok:</label>
+                        <input type="number" id="gajiPokok" name="gajiPokok" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="tunjangan" class="form-label">Tunjangan:</label>
+                        <input type="number" id="tunjangan" name="tunjangan" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="totalJamLembur" class="form-label">Total Jam Lembur:</label>
+                        <input type="number" id="totalJamLembur" name="totalJamLembur" class="form-control" required>
+                    </div>
+
+                    <button type="button" class="btn btn-primary" onclick="hitungUpah()">Hitung Upah Lemburan</button>
+                    <button type="button" class="btn btn-secondary" onclick="clearForm()">Clear</button>
+
+                    <!-- Tautan ke halaman cek.php tanpa membuka halaman baru -->
+                    <a href="cek.php" target="_self" class="btn btn-info">Cek total jam lembur</a>
+                </form>
+            </div>
+        </div>
+
+        <!-- Card Bootstrap untuk output dengan kelas tambahan untuk penampilan kustom -->
+        <div class="card custom-card-output">
+            <div class="card-body" id="hasilUpah">
+                <!-- Hasil perhitungan akan muncul di sini -->
+            </div>
+        </div>
+
+        <!-- Div untuk menampilkan hasil total jam -->
+        <div class="hasil-total-jam" id="hasilTotalJam">
+            <!-- Hasil total jam akan muncul di sini -->
+        </div>
+    </div>
+    <!-- Footer -->
+    <div class="footer text-center">
+        <p>Follow Instagram: <a href="https://www.instagram.com/cahyaeko_adiputro" target="_blank" class="instagram-link">@maslight</a></p>
+        <p>&copy; 2023 maslight. Hak Cipta Dilindungi.</p>
+    </div>
+
+    <!-- Tambahkan tautan ke Bootstrap JavaScript (untuk fungsi Bootstrap) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/js/bootstrap.min.js"></script>
+
+    <script>
+        function hitungUpah() {
+            var gajiPokok = parseFloat(document.getElementById("gajiPokok").value);
+            var tunjangan = parseFloat(document.getElementById("tunjangan").value);
+            var totalJamLembur = parseFloat(document.getElementById("totalJamLembur").value);
+
+            var upahLembur = (gajiPokok + tunjangan) / 173;
+            var totalUpahLembur = upahLembur * totalJamLembur;
+
+            var hasilUpahElement = document.getElementById("hasilUpah");
+            hasilUpahElement.innerHTML = "<strong>buruh dilarang sakit kawan:</strong> Rp " + totalUpahLembur.toFixed(2);
+        }
+
+        function clearForm() {
+            document.getElementById("gajiPokok").value = "";
+            document.getElementById("tunjangan").value = "";
+            document.getElementById("totalJamLembur").value = "";
+            document.getElementById("hasilUpah").innerHTML = "";
+        }
+    </script>
+</body>
+</html>
